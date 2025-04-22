@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="Student">
+  <typeAlias alias="Student"  type="workshop.student.entity.Student" />
+  
+  <delete id="deleteUser" parameterClass="java.lang.String">
+    delete from Users where id = #id#
+  </delete>
+  
+  <insert id="insertStudent" parameterClass="Student" >
+      insert into student values ( #studentID#, #name#, #kor#,#math#,#eng#)
+  </insert>
+    <update id="updateUser" parameterClass="Student">
+  	update student set student_name = #name#, kor = #kor#, math = #math#, eng = #eng# where student_id = #studentID#
+  </update>
+  
+  <select id="getStudent" parameterClass="java.lang.Integer" resultClass="Student">
+    select * from student where student_id = #studentID#
+  </select>
+    
+  <select id="getAllStudent"  resultClass="Student">
+    select * from student order by student_id
+  </select>
+ 
+  <!-- 
+   <select id="selectEmpByDeptWithJoin" parameterClass="java.lang.String" 
+   			resultMap="join-resultmap">
+	   <![CDATA[
+	       SELECT 	E.EMPLOYEE_ID, 
+	       			E.FIRST_NAME || ' ' || E.LAST_NAME AS ENAME, 
+	       			E.DEPARTMENT_ID, 
+	       			D.DEPARTMENT_NAME,
+	       			TO_CHAR(E.HIRE_DATE,'YYYY-MM-DD') AS HIRE_DATE,
+	       			E.SALARY,
+	       			J.JOB_TITLE
+	       FROM EMPLOYEES E, DEPARTMENTS D, JOBS J
+	       WHERE E.DEPARTMENT_ID = D.DEPARTMENT_ID
+	         AND E.JOB_ID = E.JOB_ID
+	         AND E.EMPLOYEE_ID = #empno#
+	  ]]>           
+    </select>
+  -->     
+  
+	
+</sqlMap>

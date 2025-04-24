@@ -27,6 +27,23 @@ public class ManageBookUsingArray {
 		System.out.println(pubs[2].getTitle() + " : " + pubs[2].getPrice());
 		
 	}
+	
+	/*
+     * SubClass 들이 단독으로 가지고 있는 정보를 출력하는 메서드
+     */
+    public void printSubInfo(Publication pub) {
+    	if(pub instanceof Magazine) {
+    		Magazine mag = (Magazine)pub;
+    		System.out.println(mag.getPublishingPeriod());
+    	}else if(pub instanceof Novel){
+    		Novel nov = (Novel)pub;
+    		System.out.println(nov.getAuthor()+ "  " + nov.getGenre());
+    	}else if(pub instanceof ReferenceBook){
+    		ReferenceBook rBook = (ReferenceBook)pub;
+    		System.out.println(rBook.getField());
+    	}
+    }
+
 
 	public void modifyPrice(Publication pub) {
 		double rate = 0.0d;

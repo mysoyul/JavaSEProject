@@ -26,12 +26,17 @@ public class ManageBookUsingArray {
 		System.out.println("==== 가격정보 변경 후====");
 		System.out.println(pubs[2].getTitle() + " : " + pubs[2].getPrice());
 		
+		
+		for (Publication publication : pubs) {
+			printSubInfo(publication);
+		}
+
 	}
 	
 	/*
      * SubClass 들이 단독으로 가지고 있는 정보를 출력하는 메서드
      */
-    public void printSubInfo(Publication pub) {
+    public static void printSubInfo(Publication pub) {
     	if(pub instanceof Magazine) {
     		Magazine mag = (Magazine)pub;
     		System.out.println(mag.getPublishingPeriod());
